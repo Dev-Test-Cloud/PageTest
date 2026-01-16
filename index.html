@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .data-item {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Dashboard</h1>
+    <p class="timestamp">Last updated: 2026-01-16T16:12:26.381800</p>
+    <h2>Items</h2>
+    <div id="items">
+        <div class="data-item">
+            <strong>Item 1</strong>: 100
+        </div>
+        <div class="data-item">
+            <strong>Item 2</strong>: 200
+        </div>
+        <div class="data-item">
+            <strong>Item 3</strong>: 300
+        </div>
+    </div>
+    <h2>Raw Data</h2>
+    <pre id="json-data"></pre>
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('json-data').textContent = 
+                    JSON.stringify(data, null, 2);
+            });
+    </script>
+</body>
+</html>
